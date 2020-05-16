@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "npm run build-watch & npm run start-server",
-    "start-server": "nodemon main.js -e html,js,css --ignore public",
+    "start-server": "nodemon main.js -e html,js,scss --ignore public --ignore client",
     "build-watch": "webpack -w",
     "test": "NODE_ENV='test' mocha  ./tests --recursive --watch --require babel-polyfill --require babel-register",
     "start": "echo 'Running server for production - developers, use npm run start-dev for development' && node main",
@@ -23,6 +23,7 @@
     "body-parser": "^1.18.2",
     "chalk": "^2.4.2",
     "express": "^4.14.0",
+    "p5": "^1.0.0",
     "pg": "^7.4.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
