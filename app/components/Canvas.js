@@ -20,7 +20,7 @@ const mapStateToProps = function (state) {
 // }
 
 const Canvas = (props) => {
-  if (props.image.URL === undefined) {
+  if (props.image.image === undefined) {
     return <ImageUploadTest />;
   } else {
     return <Grid />;
