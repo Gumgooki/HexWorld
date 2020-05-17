@@ -14,7 +14,7 @@ class Hex extends React.Component {
   }
 
   render() {
-    return <div ref={this.myRef}></div>;
+    return <div className="canvas" ref={this.myRef}></div>;
   }
 }
 

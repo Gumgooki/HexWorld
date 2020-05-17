@@ -5,24 +5,42 @@
 
 * {
   box-sizing: border-box;
-  font-family: arial, sans-serif;
+  font-family: 'Russo One', sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
 }
 
 body {
-  background: linear-gradient(#ffffff, #c0c0c0);
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  width: 100vw;
+  margin: auto 0;
 }
 
-nav {
-  align-items: center;
-  background-color: #333333;
-  color: #c0c0c0;
+.hex-nav {
+  padding-left: 2%;
+  background-color: thistle;
+}
+
+.hex-nav a {
   display: flex;
-  height: 80px;
-  padding: 10px;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+}
+
+.hex-nav a img {
+  width: 80px;
+}
+
+.hex-nav a h1 {
+  color: mintcream;
+  font-weight: 400;
+  font-size: xxx-large;
+}
+
+.canvas {
+  align-self: center;
 }
 
 main {
