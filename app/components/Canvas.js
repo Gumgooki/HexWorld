@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ImageUpload from './ImageUpload';
+import ImageUploadTest from './ImageUploadTest';
 import Grid from './Grid';
 
 const mapStateToProps = function (state) {
@@ -19,9 +20,8 @@ const mapStateToProps = function (state) {
 // }
 
 const Canvas = (props) => {
-  console.log(props);
   if (props.image.URL === undefined) {
-    return <ImageUpload />;
+    return <ImageUploadTest />;
   } else {
     return <Grid />;
   }
