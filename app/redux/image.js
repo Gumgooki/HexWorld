@@ -32,8 +32,9 @@ export const fetchImage = function (imageURL) {
 export const fetchImageTest = function (image) {
   return async (dispatch) => {
     try {
+      console.log(image);
       const newImage = await axios.post('/api/file-upload', image);
-      dispatch(setImageTest(newImage));
+      dispatch(setImageTest(image));
     } catch (err) {
       console.log(err);
     }
