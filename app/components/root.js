@@ -13,6 +13,9 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Canvas} />
         </Switch>
+        <Switch>
+          <Route exact path="/test" component={Grid} />
+        </Switch>
       </div>
     </Router>
   );

@@ -24,7 +24,7 @@ const Canvas = (props) => {
   if (props.image.image === undefined) {
     return <ImageUploadTest />;
   } else {
-    return <ImageRenderTest />;
+    return <Grid />;
   }
 };
 

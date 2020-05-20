@@ -11,7 +11,7 @@ app.use(volleyball.custom({ debug }));
 
 // body parsing middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true, limit: '4mb' }));
+app.use(express.urlencoded({ extended: true, limit: '8mb' }));
 
 // static middleware
 app.use(express.static(path.join(__dirname, '../public')));
