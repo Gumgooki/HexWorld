@@ -16,16 +16,25 @@ class Hex extends React.Component {
   gridSketch = (p) => {
     var img;
     p.setup = () => {
-      p.createCanvas(900, 400);
+      p.createCanvas(1500, 800);
       img = p.createImg(this.props.image.image);
       img.hide();
-      p.background(100);
+      // p.background(100);
     };
 
     p.draw = () => {
-      p.image(img, 0, 0, p.width, p.height);
-      for (var x = 0; x < p.width; x += p.width / 20) {
-        for (var y = 0; y < p.height; y += p.height / 20) {
+      //changign scale will adjust how zoomed the image is, but will also not utilize part of the canvas. Current implementation means there will be blank hexes
+      var scale = 1;
+      p.imageMode(p.CENTER);
+      p.image(
+        img,
+        0.5 * p.width,
+        0.5 * p.height,
+        scale * p.width,
+        (scale * img.height * p.width) / img.width
+      );
+      for (var x = 0; x <= p.width; x += p.width / 20) {
+        for (var y = 0; y <= p.height; y += p.height / 20) {
           p.stroke(0);
           p.strokeWeight(1);
           p.line(x, 0, x, p.height);
