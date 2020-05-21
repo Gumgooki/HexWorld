@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchImage } from '../redux/image';
+import { fetchImageTest } from '../redux/image';
 
 const mapStateToProps = function (state) {
   return {
@@ -10,47 +10,52 @@ const mapStateToProps = function (state) {
 
 const mapDispatchToProps = function (dispatch) {
   return {
-    loadImage: (imageURL) => dispatch(fetchImage(imageURL)),
+    loadImage: (imageURL) => dispatch(fetchImageTest(imageURL)),
   };
 };
 
-class ImageUpload extends React.Component {
+class ImageUploadTest extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageURL: '',
+      image: null,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.fileChangeHandler = this.fileChangeHandler.bind(this);
+    this.onImageChange = this.onImageChange.bind(this);
+    this.uploadHandler = this.uploadHandler.bind(this);
   }
   render() {
     return (
       <div>
-        <h2>Upload Image</h2>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="imageURL">Image URL</label>
-            <input
-              type="text"
-              name="imageURL"
-              value={this.state.imageURL}
-              onChange={this.handleChange}
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        <input
+          type="file"
+          onChange={this.onImageChange}
+          className="filetype"
+          id="group_image"
+        />
       </div>
     );
   }
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.loadImage(this.state.imageURL);
+  uploadHandler(event) {
+    // event.preventDefault();
+    this.props.loadImage(this.state.image);
+    console.log(this.state.selectedFile);
   }
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+
+  onImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        this.setState({ image: e.target.result });
+        this.uploadHandler();
+      };
+      reader.readAsDataURL(event.target.files[0]);
+      console.log(reader.result);
+    }
+  };
+  fileChangeHandler(event) {
+    this.setState({ selectedFile: event.target.files[0] });
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageUpload);
+export default connect(mapStateToProps, mapDispatchToProps)(ImageUploadTest);
