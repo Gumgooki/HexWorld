@@ -41,6 +41,7 @@ body {
 
 .canvas {
   align-self: center;
+  margin: 2% 0;
 }
 
 main {
@@ -48,4 +49,9 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#file-upload {
+  text-align: center;
+  margin: 5% 0;
 }

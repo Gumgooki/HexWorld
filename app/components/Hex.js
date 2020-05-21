@@ -65,7 +65,7 @@ class Hex extends React.Component {
     };
 
     p.draw = () => {
-      //changign scale will adjust how zoomed the image is, but will also not utilize part of the canvas. Current implementation means there will be blank hexes
+      //changing scale will adjust how zoomed the image is, but will also not utilize part of the canvas. Current implementation means there will be blank hexes
       var scale = 1;
       p.imageMode(p.CENTER);
       p.image(

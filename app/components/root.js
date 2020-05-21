@@ -8,7 +8,6 @@ const App = () => {
     <Router>
       <div className="App">
         <Navbar />
-        {/* <p>This seems like a nice place to get started with some Routes!</p> */}
         <Switch>
           <Route exact path="/" component={Canvas} />
         </Switch>

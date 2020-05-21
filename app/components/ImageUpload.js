@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchImageTest } from '../redux/image';
+import ReactDropzone from 'react-dropzone';
 
 const mapStateToProps = function (state) {
   return {
@@ -26,7 +27,7 @@ class ImageUploadTest extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div id="file-upload">
         <input
           type="file"
           onChange={this.onImageChange}
@@ -37,20 +38,22 @@ class ImageUploadTest extends React.Component {
     );
   }
   uploadHandler(event) {
-    // event.preventDefault();
     this.props.loadImage(this.state.image);
-    console.log(this.state.selectedFile);
   }
 
   onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let reader = new FileReader();
       reader.onload = (e) => {
+        console.log('After the reader.onload starts', e);
         this.setState({ image: e.target.result });
         this.uploadHandler();
       };
+      console.log(
+        'Before the reader.ReadAsDataURL invoked',
+        event.target.files[0]
+      );
       reader.readAsDataURL(event.target.files[0]);
-      console.log(reader.result);
     }
   };
   fileChangeHandler(event) {
