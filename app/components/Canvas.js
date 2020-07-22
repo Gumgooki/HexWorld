@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ImageUpload from './ImageUpload';
 import Hex from './Hex';
+import OriginalGrid from './OriginalGrid';
 
 const mapStateToProps = function (state) {
   return {
@@ -13,7 +14,7 @@ const Canvas = (props) => {
   if (props.image.image === undefined) {
     return <ImageUpload />;
   } else {
-    return <Hex />;
+    return <OriginalGrid />;
   }
 };
 
