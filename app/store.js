@@ -32,9 +32,11 @@ const rootReducer = (state, action) => {
   return appReducer(state, action);
 };
 
-export default createStore(
+const store = createStore(
   rootReducer,
   // 👇 This uses the Redux DevTools extension, assuming you have it installed in your browser.
   // 👇 See: https://github.com/zalmoxisus/redux-devtools-extension
   composeWithDevTools(applyMiddleware(...middleware))
 );
+
+export default store;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ImageUpload from './ImageUpload';
 import Hex from './Hex';
 import OriginalGrid from './OriginalGrid';
+import WrapperTest from './WrapperTest';
 
 const mapStateToProps = function (state) {
   return {
@@ -14,7 +15,7 @@ const Canvas = (props) => {
   if (props.image.image === undefined) {
     return <ImageUpload />;
   } else {
-    return <OriginalGrid />;
+    return <WrapperTest />;
   }
 };
 
