@@ -1,0 +1,49 @@
+import React from 'react';
+// import p5 from 'p5';
+import { connect } from 'react-redux';
+import P5Wrapper from 'react-p5-wrapper';
+//test
+import store from '../store';
+
+const WrapperGrid = function (p) {
+  const state = store.getState();
+  let testNumber;
+  let img = state.image.image;
+
+  p.setup = function () {
+    p.createCanvas(1500, 800);
+    //img = p.createImg(props.image);
+    img = p.createImg(img);
+    //need to hide this image for some reason, kind of a weird quirk?
+    img.hide();
+  };
+
+  p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+    if (props.testNumber) {
+      testNumber = props.testNumber;
+    }
+  };
+
+  p.draw = () => {
+    //changign scale will adjust how zoomed the image is, but will also not utilize part of the canvas. Current implementation means there will be blank hexes
+    var scale = 1;
+    p.imageMode(p.CENTER);
+    p.image(
+      img,
+      0.5 * p.width,
+      0.5 * p.height,
+      scale * p.width,
+      (scale * img.height * p.width) / img.width
+    );
+    for (var x = 0; x <= p.width; x += p.width / testNumber) {
+      for (var y = 0; y <= p.height; y += p.height / 20) {
+        p.stroke(0);
+        p.strokeWeight(1);
+        p.line(x, 0, x, p.height);
+        p.line(0, y, p.width, y);
+      }
+    }
+  };
+};
+
+export default WrapperGrid;
