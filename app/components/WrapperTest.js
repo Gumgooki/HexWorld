@@ -3,6 +3,7 @@ import React from 'react';
 import WrapperGrid from './WrapperGrid';
 import WrapperHex from './WrapperHex';
 import { connect } from 'react-redux';
+import { HuePicker } from 'react-color';
 
 class WrapperTest extends React.Component {
   constructor(props) {
@@ -10,15 +11,25 @@ class WrapperTest extends React.Component {
     this.state = {
       //10 for wrapperGrid, 1 fgor hexGrid
       testNumber: 1,
+      hexColor: '#D68541',
     };
   }
   numberChanger(e) {
     this.setState({ testNumber: e.target.value });
   }
+
+  colorChanger(color) {
+    this.setState({ hexColor: color.hex });
+  }
+
   render() {
     return (
       <div className="canvas">
-        <P5Wrapper sketch={WrapperHex} testNumber={this.state.testNumber} />
+        <P5Wrapper
+          sketch={WrapperHex}
+          testNumber={this.state.testNumber}
+          hexColor={this.state.hexColor}
+        />
         <input
           type="range"
           value={this.state.testNumber}
@@ -26,6 +37,10 @@ class WrapperTest extends React.Component {
           max="10"
           step="1"
           onInput={this.numberChanger.bind(this)}
+        />
+        <HuePicker
+          color={this.state.hexColor}
+          onChange={this.colorChanger.bind(this)}
         />
       </div>
     );

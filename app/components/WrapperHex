@@ -10,6 +10,7 @@ const WrapperHex = function (p) {
   let r, s;
   let hexagons;
   let testNumber;
+  let hexColor;
   let img = state.image.image;
 
   function hexagon(x, y, r) {
@@ -31,7 +32,7 @@ const WrapperHex = function (p) {
 
     render() {
       p.noFill();
-      p.stroke(0);
+      p.stroke(hexColor);
       hexagon(this.x, this.y, this.r);
       p.text(this.name, this.x, this.y);
     }
@@ -48,6 +49,9 @@ const WrapperHex = function (p) {
   p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
     if (props.testNumber) {
       testNumber = props.testNumber;
+    }
+    if (props.hexColor) {
+      hexColor = props.hexColor;
     }
   };
 
@@ -82,7 +86,7 @@ const WrapperHex = function (p) {
         nearestHexagon = h;
       }
     });
-    p.stroke(200, 50, 50);
+    p.stroke(0);
     p.line(nearestHexagon.x, nearestHexagon.y);
   };
 };
