@@ -3,7 +3,7 @@ import React from 'react';
 import WrapperGrid from './WrapperGrid';
 import WrapperHex from './WrapperHex';
 import { connect } from 'react-redux';
-import { HuePicker } from 'react-color';
+import { HuePicker, SliderPicker } from 'react-color';
 
 class WrapperTest extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class WrapperTest extends React.Component {
           step="1"
           onInput={this.numberChanger.bind(this)}
         />
-        <HuePicker
+        <SliderPicker
           color={this.state.hexColor}
           onChange={this.colorChanger.bind(this)}
         />
