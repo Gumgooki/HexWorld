@@ -17,7 +17,7 @@ class WrapperTest extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="canvas">
         <P5Wrapper sketch={WrapperHex} testNumber={this.state.testNumber} />
         <input
           type="range"

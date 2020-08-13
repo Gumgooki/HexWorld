@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Image } = require('../db/index');
 
 router.get('/', (req, res, next) => {
   try {
