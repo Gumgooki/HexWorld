@@ -30,6 +30,7 @@ class WrapperTest extends React.Component {
           testNumber={this.state.testNumber}
           hexColor={this.state.hexColor}
         />
+        <h2>SIZE</h2>
         <input
           type="range"
           value={this.state.testNumber}
@@ -38,6 +39,7 @@ class WrapperTest extends React.Component {
           step="1"
           onInput={this.numberChanger.bind(this)}
         />
+        <h2>COLOR</h2>
         <SliderPicker
           color={this.state.hexColor}
           onChange={this.colorChanger.bind(this)}
