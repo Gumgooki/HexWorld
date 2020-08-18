@@ -3,7 +3,7 @@ import React from 'react';
 import WrapperGrid from './WrapperGrid';
 import WrapperHex from './WrapperHex';
 import { connect } from 'react-redux';
-import { HuePicker, SliderPicker } from 'react-color';
+import { HuePicker, SliderPicker, Hue, Alpha, AlphaPicker } from 'react-color';
 
 class WrapperTest extends React.Component {
   constructor(props) {
@@ -12,14 +12,22 @@ class WrapperTest extends React.Component {
       //10 for wrapperGrid, 1 fgor hexGrid
       testNumber: 1,
       hexColor: '#D68541',
+      imageHue: 0,
+      imageAlpha: 0,
     };
   }
-  numberChanger(e) {
+  hexSizeChanger(e) {
     this.setState({ testNumber: e.target.value });
   }
 
-  colorChanger(color) {
+  hexColorChanger(color) {
     this.setState({ hexColor: color.hex });
+  }
+  imageHueChanger(color) {
+    this.setState({ imageHue: color.hsl });
+  }
+  imageAlphaChanger(color) {
+    this.setState({ imageAlpha: color.hsl });
   }
 
   render() {
@@ -29,6 +37,8 @@ class WrapperTest extends React.Component {
           sketch={WrapperHex}
           testNumber={this.state.testNumber}
           hexColor={this.state.hexColor}
+          imageHue={this.state.imageHue}
+          imageAlpha={this.state.imageAlpha}
         />
         <h2>SIZE</h2>
         <input
@@ -37,12 +47,21 @@ class WrapperTest extends React.Component {
           min="1"
           max="10"
           step="1"
-          onInput={this.numberChanger.bind(this)}
+          onInput={this.hexSizeChanger.bind(this)}
         />
         <h2>COLOR</h2>
         <SliderPicker
           color={this.state.hexColor}
-          onChange={this.colorChanger.bind(this)}
+          onChange={this.hexColorChanger.bind(this)}
+        />
+        <h2>IMAGE TINT</h2>
+        <HuePicker
+          color={this.state.imageHue}
+          onChange={this.imageHueChanger.bind(this)}
+        />
+        <AlphaPicker
+          color={this.state.imageAlpha}
+          onChange={this.imageAlphaChanger.bind(this)}
         />
       </div>
     );

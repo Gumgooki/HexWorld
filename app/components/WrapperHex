@@ -11,6 +11,8 @@ const WrapperHex = function (p) {
   let hexagons;
   let testNumber;
   let hexColor;
+  let imageHue;
+  let imageAlpha;
   let img = state.image.image;
 
   function hexagon(x, y, r) {
@@ -56,6 +58,12 @@ const WrapperHex = function (p) {
     }
     if (props.hexColor) {
       hexColor = props.hexColor;
+    }
+    if (props.imageHue) {
+      imageHue = props.imageHue;
+    }
+    if (props.imageAlpha) {
+      imageAlpha = props.imageAlpha;
     }
   };
 
