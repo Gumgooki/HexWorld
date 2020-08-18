@@ -11,8 +11,7 @@ const WrapperHex = function (p) {
   let hexagons;
   let testNumber;
   let hexColor;
-  let imageHue;
-  let imageAlpha;
+  let imageHueAlpha;
   let img = state.image.image;
 
   function hexagon(x, y, r) {
@@ -57,13 +56,20 @@ const WrapperHex = function (p) {
       testNumber = props.testNumber;
     }
     if (props.hexColor) {
-      hexColor = props.hexColor;
+      hexColor = p.color(
+        props.hexColor.r,
+        props.hexColor.g,
+        props.hexColor.b,
+        props.hexColor.a * 1000
+      );
     }
-    if (props.imageHue) {
-      imageHue = props.imageHue;
-    }
-    if (props.imageAlpha) {
-      imageAlpha = props.imageAlpha;
+    if (props.imageHue && props.imageAlpha) {
+      imageHueAlpha = p.color(
+        props.imageHue.r,
+        props.imageHue.g,
+        props.imageHue.b,
+        props.imageHue.a * 1000
+      );
     }
   };
 
@@ -71,7 +77,7 @@ const WrapperHex = function (p) {
     //changing scale will adjust how zoomed the image is, but will also not utilize part of the canvas. Current implementation means there will be blank hexes
     var scale = 1;
     p.imageMode(p.CENTER);
-    p.tint(0, 153, 204);
+    p.tint(imageHueAlpha);
     p.image(
       img,
       0.5 * p.width,

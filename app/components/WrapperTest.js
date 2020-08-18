@@ -3,7 +3,14 @@ import React from 'react';
 import WrapperGrid from './WrapperGrid';
 import WrapperHex from './WrapperHex';
 import { connect } from 'react-redux';
-import { HuePicker, SliderPicker, Hue, Alpha, AlphaPicker } from 'react-color';
+import {
+  HuePicker,
+  SliderPicker,
+  Hue,
+  Alpha,
+  AlphaPicker,
+  ChromePicker,
+} from 'react-color';
 
 class WrapperTest extends React.Component {
   constructor(props) {
@@ -11,9 +18,24 @@ class WrapperTest extends React.Component {
     this.state = {
       //10 for wrapperGrid, 1 fgor hexGrid
       testNumber: 1,
-      hexColor: '#D68541',
-      imageHue: 0,
-      imageAlpha: 0,
+      hexColor: {
+        r: 255,
+        g: 255,
+        b: 255,
+        a: 255,
+      },
+      imageHue: {
+        r: 255,
+        g: 255,
+        b: 255,
+        a: 1,
+      },
+      imageAlpha: {
+        r: 0,
+        g: 0,
+        b: 0,
+        a: 1,
+      },
     };
   }
   hexSizeChanger(e) {
@@ -21,13 +43,10 @@ class WrapperTest extends React.Component {
   }
 
   hexColorChanger(color) {
-    this.setState({ hexColor: color.hex });
+    this.setState({ hexColor: color.rgb });
   }
   imageHueChanger(color) {
-    this.setState({ imageHue: color.hsl });
-  }
-  imageAlphaChanger(color) {
-    this.setState({ imageAlpha: color.hsl });
+    this.setState({ imageHue: color.rgb });
   }
 
   render() {
@@ -38,7 +57,6 @@ class WrapperTest extends React.Component {
           testNumber={this.state.testNumber}
           hexColor={this.state.hexColor}
           imageHue={this.state.imageHue}
-          imageAlpha={this.state.imageAlpha}
         />
         <h2>SIZE</h2>
         <input
@@ -50,18 +68,14 @@ class WrapperTest extends React.Component {
           onInput={this.hexSizeChanger.bind(this)}
         />
         <h2>COLOR</h2>
-        <SliderPicker
+        <ChromePicker
           color={this.state.hexColor}
           onChange={this.hexColorChanger.bind(this)}
         />
         <h2>IMAGE TINT</h2>
-        <HuePicker
+        <ChromePicker
           color={this.state.imageHue}
           onChange={this.imageHueChanger.bind(this)}
-        />
-        <AlphaPicker
-          color={this.state.imageAlpha}
-          onChange={this.imageAlphaChanger.bind(this)}
         />
       </div>
     );
