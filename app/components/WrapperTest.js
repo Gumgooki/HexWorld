@@ -22,18 +22,12 @@ class WrapperTest extends React.Component {
         r: 255,
         g: 255,
         b: 255,
-        a: 255,
+        a: 1,
       },
       imageHue: {
         r: 255,
         g: 255,
         b: 255,
-        a: 1,
-      },
-      imageAlpha: {
-        r: 0,
-        g: 0,
-        b: 0,
         a: 1,
       },
     };

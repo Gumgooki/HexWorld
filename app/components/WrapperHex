@@ -63,7 +63,7 @@ const WrapperHex = function (p) {
         props.hexColor.a * 1000
       );
     }
-    if (props.imageHue && props.imageAlpha) {
+    if (props.imageHue) {
       imageHueAlpha = p.color(
         props.imageHue.r,
         props.imageHue.g,
