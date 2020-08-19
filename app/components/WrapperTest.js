@@ -36,6 +36,8 @@ class WrapperTest extends React.Component {
         b: 255,
         a: 1,
       },
+      gridY: 0,
+      gridX: 0,
     };
   }
   hexSizeChanger(e) {
@@ -51,6 +53,12 @@ class WrapperTest extends React.Component {
   imageHueChanger(color) {
     this.setState({ imageHue: color.rgb });
   }
+  gridXChanger(e) {
+    this.setState({ gridX: parseInt(e.target.value) });
+  }
+  gridYChanger(e) {
+    this.setState({ gridY: parseInt(e.target.value) });
+  }
 
   render() {
     return (
@@ -61,6 +69,26 @@ class WrapperTest extends React.Component {
           hexColor={this.state.hexColor}
           hexNameColor={this.state.hexNameColor}
           imageHue={this.state.imageHue}
+          gridX={this.state.gridX}
+          gridY={this.state.gridY}
+        />
+        <h2>X INPUT</h2>
+        <input
+          type="range"
+          value={this.state.gridX}
+          min="-50"
+          max="50"
+          step="1"
+          onInput={this.gridXChanger.bind(this)}
+        />
+        <h2>Y INPUT</h2>
+        <input
+          type="range"
+          value={this.state.gridY}
+          min="-40"
+          max="40"
+          step="1"
+          onInput={this.gridYChanger.bind(this)}
         />
         <h2>SIZE</h2>
         <input

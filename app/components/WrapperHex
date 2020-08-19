@@ -13,6 +13,8 @@ const WrapperHex = function (p) {
   let hexColor;
   let hexNameColor;
   let imageHueAlpha;
+  let gridY = 0;
+  let gridX = 0;
   let img = state.image.image;
 
   function hexagon(x, y, r) {
@@ -61,6 +63,12 @@ const WrapperHex = function (p) {
     if (props.testNumber) {
       testNumber = props.testNumber;
     }
+    if (props.gridX) {
+      gridX = props.gridX;
+    }
+    if (props.gridY) {
+      gridY = props.gridY;
+    }
     if (props.hexColor) {
       hexColor = p.color(
         props.hexColor.r,
@@ -105,8 +113,8 @@ const WrapperHex = function (p) {
 
     // create hexagons
     let counter = 0;
-    for (let y = 0; y < p.height + s; y += 2 * s) {
-      for (let x = 0; x < p.width + r; x += 3 * r) {
+    for (let y = gridY; y < p.height + s; y += 2 * s) {
+      for (let x = gridX; x < p.width + r; x += 3 * r) {
         hexagons.push(new Hexagon(x, y, r, counter++));
         hexagons.push(new Hexagon(x + 1.5 * r, y + s, r, counter++));
       }
