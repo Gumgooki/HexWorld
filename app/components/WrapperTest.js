@@ -24,6 +24,12 @@ class WrapperTest extends React.Component {
         b: 255,
         a: 1,
       },
+      hexNameColor: {
+        r: 255,
+        g: 255,
+        b: 255,
+        a: 1,
+      },
       imageHue: {
         r: 255,
         g: 255,
@@ -39,6 +45,9 @@ class WrapperTest extends React.Component {
   hexColorChanger(color) {
     this.setState({ hexColor: color.rgb });
   }
+  hexNameColorChanger(color) {
+    this.setState({ hexNameColor: color.rgb });
+  }
   imageHueChanger(color) {
     this.setState({ imageHue: color.rgb });
   }
@@ -50,6 +59,7 @@ class WrapperTest extends React.Component {
           sketch={WrapperHex}
           testNumber={this.state.testNumber}
           hexColor={this.state.hexColor}
+          hexNameColor={this.state.hexNameColor}
           imageHue={this.state.imageHue}
         />
         <h2>SIZE</h2>
@@ -61,10 +71,15 @@ class WrapperTest extends React.Component {
           step="1"
           onInput={this.hexSizeChanger.bind(this)}
         />
-        <h2>COLOR</h2>
+        <h2>HEX COLOR</h2>
         <ChromePicker
           color={this.state.hexColor}
           onChange={this.hexColorChanger.bind(this)}
+        />
+        <h2>HEX NAME COLOR</h2>
+        <ChromePicker
+          color={this.state.hexNameColor}
+          onChange={this.hexNameColorChanger.bind(this)}
         />
         <h2>IMAGE TINT</h2>
         <ChromePicker

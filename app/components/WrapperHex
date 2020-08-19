@@ -11,6 +11,7 @@ const WrapperHex = function (p) {
   let hexagons;
   let testNumber;
   let hexColor;
+  let hexNameColor;
   let imageHueAlpha;
   let img = state.image.image;
 
@@ -34,11 +35,12 @@ const WrapperHex = function (p) {
     render() {
       p.noFill();
       p.stroke(hexColor);
-      p.strokeWeight(1);
+      p.strokeWeight(1 * testNumber);
       hexagon(this.x, this.y, this.r);
-      p.stroke('#000000');
-      p.strokeWeight(1.5 * testNumber);
-      p.textSize(15 * testNumber);
+      p.stroke(hexNameColor);
+      p.strokeWeight(0.5 * testNumber);
+      p.fill(hexNameColor);
+      p.textSize(10 * testNumber);
       p.text(this.name, this.x, this.y);
     }
   }
@@ -65,6 +67,14 @@ const WrapperHex = function (p) {
         props.hexColor.g,
         props.hexColor.b,
         props.hexColor.a * 1000
+      );
+    }
+    if (props.hexNameColor) {
+      hexNameColor = p.color(
+        props.hexNameColor.r,
+        props.hexNameColor.g,
+        props.hexNameColor.b,
+        props.hexNameColor.a * 1000
       );
     }
     if (props.imageHue) {
