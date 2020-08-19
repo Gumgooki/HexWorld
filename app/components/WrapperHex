@@ -34,7 +34,11 @@ const WrapperHex = function (p) {
     render() {
       p.noFill();
       p.stroke(hexColor);
+      p.strokeWeight(1);
       hexagon(this.x, this.y, this.r);
+      p.stroke('#000000');
+      p.strokeWeight(1.5 * testNumber);
+      p.textSize(15 * testNumber);
       p.text(this.name, this.x, this.y);
     }
   }
