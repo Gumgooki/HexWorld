@@ -55,3 +55,11 @@ main {
   text-align: center;
   margin: 5% 0;
 }
+
+.home {
+  display: flex;
+}
+
+.panel {
+  padding: 1%;
+}
