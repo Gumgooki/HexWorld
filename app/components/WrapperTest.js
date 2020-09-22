@@ -20,66 +20,67 @@ const mapStateToProps = function (state) {
 };
 
 class WrapperTest extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props.state;
-    // this.state = {
-    //   //10 for wrapperGrid, 1 fgor hexGrid
-    //   testNumber: 1,
-    //   hexColor: {
-    //     r: 255,
-    //     g: 255,
-    //     b: 255,
-    //     a: 1,
-    //   },
-    //   hexNameColor: {
-    //     r: 255,
-    //     g: 255,
-    //     b: 255,
-    //     a: 1,
-    //   },
-    //   imageHue: {
-    //     r: 255,
-    //     g: 255,
-    //     b: 255,
-    //     a: 1,
-    //   },
-    //   gridY: 0,
-    //   gridX: 0,
-    // };
-  }
-  hexSizeChanger(e) {
-    this.setState({ testNumber: e.target.value });
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = this.props.state;
+  // this.state = {
+  //   //10 for wrapperGrid, 1 fgor hexGrid
+  //   testNumber: 1,
+  //   hexColor: {
+  //     r: 255,
+  //     g: 255,
+  //     b: 255,
+  //     a: 1,
+  //   },
+  //   hexNameColor: {
+  //     r: 255,
+  //     g: 255,
+  //     b: 255,
+  //     a: 1,
+  //   },
+  //   imageHue: {
+  //     r: 255,
+  //     g: 255,
+  //     b: 255,
+  //     a: 1,
+  //   },
+  //   gridY: 0,
+  //   gridX: 0,
+  // };
+  //}
+  // hexSizeChanger(e) {
+  //   this.setState({ testNumber: e.target.value });
+  // }
 
-  hexColorChanger(color) {
-    this.setState({ hexColor: color.rgb });
-  }
-  hexNameColorChanger(color) {
-    this.setState({ hexNameColor: color.rgb });
-  }
-  imageHueChanger(color) {
-    this.setState({ imageHue: color.rgb });
-  }
-  gridXChanger(e) {
-    this.setState({ gridX: parseInt(e.target.value) });
-  }
-  gridYChanger(e) {
-    this.setState({ gridY: parseInt(e.target.value) });
-  }
+  // hexColorChanger(color) {
+  //   this.setState({ hexColor: color.rgb });
+  // }
+  // hexNameColorChanger(color) {
+  //   this.setState({ hexNameColor: color.rgb });
+  // }
+  // imageHueChanger(color) {
+  //   this.setState({ imageHue: color.rgb });
+  // }
+  // gridXChanger(e) {
+  //   this.setState({ gridX: parseInt(e.target.value) });
+  // }
+  // gridYChanger(e) {
+  //   this.setState({ gridY: parseInt(e.target.value) });
+  // }
 
   render() {
+    console.log('wrappertest log', this.props);
     return (
       <div>
         <div className="canvas">
           <P5Wrapper
             sketch={WrapperHex}
-            testNumber={this.state.testNumber}
-            hexColor={this.state.hexColor}
-            hexNameColor={this.state.hexNameColor}
-            imageHue={this.state.imageHue}
-            gridX={this.state.gridX}
-            gridY={this.state.gridY}
+            testNumber={this.props.state.testNumber}
+            hexColor={this.props.state.hexColor}
+            hexNameColor={this.props.state.hexNameColor}
+            imageHue={this.props.state.imageHue}
+            gridX={this.props.state.gridX}
+            gridY={this.props.state.gridY}
           />
           {/* <h2>X INPUT</h2>
         <input
@@ -125,10 +126,7 @@ class WrapperTest extends React.Component {
         /> */}
         </div>
         <div className="panel">
-          <Panel
-            wrapperState={this.state}
-            hexSizeChanger={this.hexSizeChanger}
-          />
+          <Panel />
         </div>
       </div>
     );
