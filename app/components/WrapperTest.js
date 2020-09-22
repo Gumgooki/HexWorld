@@ -11,34 +11,42 @@ import {
   AlphaPicker,
   ChromePicker,
 } from 'react-color';
+import Panel from './Panel';
+
+const mapStateToProps = function (state) {
+  return {
+    state: state.hexChanger,
+  };
+};
 
 class WrapperTest extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      //10 for wrapperGrid, 1 fgor hexGrid
-      testNumber: 1,
-      hexColor: {
-        r: 255,
-        g: 255,
-        b: 255,
-        a: 1,
-      },
-      hexNameColor: {
-        r: 255,
-        g: 255,
-        b: 255,
-        a: 1,
-      },
-      imageHue: {
-        r: 255,
-        g: 255,
-        b: 255,
-        a: 1,
-      },
-      gridY: 0,
-      gridX: 0,
-    };
+    this.state = this.props.state;
+    // this.state = {
+    //   //10 for wrapperGrid, 1 fgor hexGrid
+    //   testNumber: 1,
+    //   hexColor: {
+    //     r: 255,
+    //     g: 255,
+    //     b: 255,
+    //     a: 1,
+    //   },
+    //   hexNameColor: {
+    //     r: 255,
+    //     g: 255,
+    //     b: 255,
+    //     a: 1,
+    //   },
+    //   imageHue: {
+    //     r: 255,
+    //     g: 255,
+    //     b: 255,
+    //     a: 1,
+    //   },
+    //   gridY: 0,
+    //   gridX: 0,
+    // };
   }
   hexSizeChanger(e) {
     this.setState({ testNumber: e.target.value });
@@ -62,17 +70,18 @@ class WrapperTest extends React.Component {
 
   render() {
     return (
-      <div className="canvas">
-        <P5Wrapper
-          sketch={WrapperHex}
-          testNumber={this.state.testNumber}
-          hexColor={this.state.hexColor}
-          hexNameColor={this.state.hexNameColor}
-          imageHue={this.state.imageHue}
-          gridX={this.state.gridX}
-          gridY={this.state.gridY}
-        />
-        <h2>X INPUT</h2>
+      <div>
+        <div className="canvas">
+          <P5Wrapper
+            sketch={WrapperHex}
+            testNumber={this.state.testNumber}
+            hexColor={this.state.hexColor}
+            hexNameColor={this.state.hexNameColor}
+            imageHue={this.state.imageHue}
+            gridX={this.state.gridX}
+            gridY={this.state.gridY}
+          />
+          {/* <h2>X INPUT</h2>
         <input
           type="range"
           value={this.state.gridX}
@@ -113,10 +122,17 @@ class WrapperTest extends React.Component {
         <ChromePicker
           color={this.state.imageHue}
           onChange={this.imageHueChanger.bind(this)}
-        />
+        /> */}
+        </div>
+        <div className="panel">
+          <Panel
+            wrapperState={this.state}
+            hexSizeChanger={this.hexSizeChanger}
+          />
+        </div>
       </div>
     );
   }
 }
 
-export default WrapperTest;
+export default connect(mapStateToProps)(WrapperTest);
