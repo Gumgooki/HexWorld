@@ -1,7 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import WrapperTest from './WrapperTest';
-import { fetchHexSize } from '../redux/hex-changer';
+import {
+  fetchHexSize,
+  fetchHexColor,
+  fetchHexNameColor,
+  fetchImageHue,
+  fetchXInput,
+  fetchYInput,
+} from '../redux/hex-changer';
+import { ChromePicker } from 'react-color';
 
 const mapStateToProps = function (state) {
   return (state = state.hexChanger);
@@ -10,32 +17,36 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     loadHexSize: (number) => dispatch(fetchHexSize(number)),
+    loadHexColor: (color) => dispatch(fetchHexColor(color)),
+    loadHexNameColor: (color) => dispatch(fetchHexNameColor(color)),
+    loadImageHue: (hue) => dispatch(fetchImageHue(hue)),
+    loadXInput: (x) => dispatch(fetchXInput(x)),
+    loadYInput: (y) => dispatch(fetchYInput(y)),
   };
 };
 
 const Panel = (props) => {
-  console.log('here are the props', props);
   return (
     <div className="panel">
-      {/* <h1>Hello This Is The Panel</h1>
+      <h1>Hello This Is The Panel</h1>
       <h2>X INPUT</h2>
       <input
         type="range"
-        value={this.state.gridX}
+        value={props.gridX}
         min="-50"
         max="50"
         step="1"
-        onInput={this.gridXChanger.bind(this)}
+        onInput={(e) => props.loadXInput(parseInt(e.target.value))}
       />
       <h2>Y INPUT</h2>
       <input
         type="range"
-        value={this.state.gridY}
+        value={props.gridY}
         min="-40"
         max="40"
         step="1"
-        onInput={this.gridYChanger.bind(this)}
-      /> */}
+        onInput={(e) => props.loadYInput(parseInt(e.target.value))}
+      />
       <h2>SIZE</h2>
       <input
         type="range"
@@ -45,21 +56,21 @@ const Panel = (props) => {
         step="1"
         onInput={(e) => props.loadHexSize(e.target.value)}
       />
-      {/* <h2>HEX COLOR</h2>
+      <h2>HEX COLOR</h2>
       <ChromePicker
-        color={this.state.hexColor}
-        onChange={this.hexColorChanger.bind(this)}
+        color={props.hexColor}
+        onChange={(color) => props.loadHexColor(color.rgb)}
       />
       <h2>HEX NAME COLOR</h2>
       <ChromePicker
-        color={this.state.hexNameColor}
-        onChange={this.hexNameColorChanger.bind(this)}
+        color={props.hexNameColor}
+        onChange={(color) => props.loadHexNameColor(color.rgb)}
       />
       <h2>IMAGE TINT</h2>
       <ChromePicker
-        color={this.state.imageHue}
-        onChange={this.imageHueChanger.bind(this)}
-      /> */}
+        color={props.imageHue}
+        onChange={(color) => props.loadImageHue(color.rgb)}
+      />
     </div>
   );
 };
