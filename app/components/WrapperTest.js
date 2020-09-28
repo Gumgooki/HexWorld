@@ -14,22 +14,24 @@ const mapStateToProps = function (state) {
 class WrapperTest extends React.Component {
   render() {
     return (
-      <div>
-        <div className="canvas">
-          <P5Wrapper
-            sketch={WrapperHex}
-            testNumber={this.props.state.testNumber}
-            hexColor={this.props.state.hexColor}
-            hexNameColor={this.props.state.hexNameColor}
-            imageHue={this.props.state.imageHue}
-            gridX={this.props.state.gridX}
-            gridY={this.props.state.gridY}
-          />
+      <React.Fragment>
+        <div className="home">
+          <div className="canvas">
+            <P5Wrapper
+              sketch={WrapperHex}
+              testNumber={this.props.state.testNumber}
+              hexColor={this.props.state.hexColor}
+              hexNameColor={this.props.state.hexNameColor}
+              imageHue={this.props.state.imageHue}
+              gridX={this.props.state.gridX}
+              gridY={this.props.state.gridY}
+            />
+          </div>
+          <div className="panel">
+            <Panel />
+          </div>
         </div>
-        <div className="panel">
-          <Panel />
-        </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
