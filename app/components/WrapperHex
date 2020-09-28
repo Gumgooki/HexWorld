@@ -10,6 +10,11 @@ const WrapperHex = function (p) {
   let r, s;
   let hexagons;
   let testNumber;
+  let hexColor;
+  let hexNameColor;
+  let imageHueAlpha;
+  let gridY = 0;
+  let gridX = 0;
   let img = state.image.image;
 
   function hexagon(x, y, r) {
@@ -31,17 +36,26 @@ const WrapperHex = function (p) {
 
     render() {
       p.noFill();
-      p.stroke(0);
+      p.stroke(hexColor);
+      p.strokeWeight(1 * testNumber);
       hexagon(this.x, this.y, this.r);
+      p.stroke(hexNameColor);
+      p.strokeWeight(0.5 * testNumber);
+      p.fill(hexNameColor);
+      p.textSize(10 * testNumber);
       p.text(this.name, this.x, this.y);
     }
   }
-
+  // p.preload = function () {
+  //   // img = p.loadImage(img);
+  //   // img.hide();
+  // };
   p.setup = function () {
     p.createCanvas(1500, 800);
-    img = p.createImg(img);
+    img = p.loadImage(img);
+    // img = p.createImg(img);
     //need to hide this image for some reason, kind of a weird quirk?
-    img.hide();
+    // img.hide();
     p.textAlign(p.CENTER, p.CENTER);
   };
 
@@ -49,12 +63,43 @@ const WrapperHex = function (p) {
     if (props.testNumber) {
       testNumber = props.testNumber;
     }
+    if (props.gridX) {
+      gridX = props.gridX;
+    }
+    if (props.gridY) {
+      gridY = props.gridY;
+    }
+    if (props.hexColor) {
+      hexColor = p.color(
+        props.hexColor.r,
+        props.hexColor.g,
+        props.hexColor.b,
+        props.hexColor.a * 1000
+      );
+    }
+    if (props.hexNameColor) {
+      hexNameColor = p.color(
+        props.hexNameColor.r,
+        props.hexNameColor.g,
+        props.hexNameColor.b,
+        props.hexNameColor.a * 1000
+      );
+    }
+    if (props.imageHue) {
+      imageHueAlpha = p.color(
+        props.imageHue.r,
+        props.imageHue.g,
+        props.imageHue.b,
+        props.imageHue.a * 1000
+      );
+    }
   };
 
   p.draw = () => {
     //changing scale will adjust how zoomed the image is, but will also not utilize part of the canvas. Current implementation means there will be blank hexes
     var scale = 1;
     p.imageMode(p.CENTER);
+    p.tint(imageHueAlpha);
     p.image(
       img,
       0.5 * p.width,
@@ -68,8 +113,8 @@ const WrapperHex = function (p) {
 
     // create hexagons
     let counter = 0;
-    for (let y = 0; y < p.height + s; y += 2 * s) {
-      for (let x = 0; x < p.width + r; x += 3 * r) {
+    for (let y = gridY; y < p.height + s; y += 2 * s) {
+      for (let x = gridX; x < p.width + r; x += 3 * r) {
         hexagons.push(new Hexagon(x, y, r, counter++));
         hexagons.push(new Hexagon(x + 1.5 * r, y + s, r, counter++));
       }
@@ -82,7 +127,7 @@ const WrapperHex = function (p) {
         nearestHexagon = h;
       }
     });
-    p.stroke(200, 50, 50);
+    p.stroke(0);
     p.line(nearestHexagon.x, nearestHexagon.y);
   };
 };

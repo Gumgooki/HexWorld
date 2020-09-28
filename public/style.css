@@ -41,7 +41,7 @@ body {
 
 .canvas {
   align-self: center;
-  margin: 2% 0;
+  margin: 0.5% 0;
 }
 
 main {
@@ -54,4 +54,12 @@ main {
 #file-upload {
   text-align: center;
   margin: 5% 0;
+}
+
+.home {
+  display: flex;
+}
+
+.panel {
+  padding: 1%;
 }

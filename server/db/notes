@@ -1,2 +1,4 @@
 Thinking of ideas for schema; instead of using a dataURL for storage, if this was to actually be usable it makes senset to store somewhere on the DB. This document will be a place for me to figure out what kind of schema we might need.
 
+image table
+image URL

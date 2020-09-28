@@ -1,35 +1,37 @@
 import P5Wrapper from 'react-p5-wrapper';
 import React from 'react';
-import WrapperGrid from './WrapperGrid';
 import WrapperHex from './WrapperHex';
 import { connect } from 'react-redux';
 
+import Panel from './Panel';
+
+const mapStateToProps = function (state) {
+  return {
+    state: state.hexChanger,
+  };
+};
+
 class WrapperTest extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      //10 for wrapperGrid, 1 fgor hexGrid
-      testNumber: 1,
-    };
-  }
-  numberChanger(e) {
-    this.setState({ testNumber: e.target.value });
-  }
   render() {
     return (
       <div>
-        <P5Wrapper sketch={WrapperHex} testNumber={this.state.testNumber} />
-        <input
-          type="range"
-          value={this.state.testNumber}
-          min="1"
-          max="10"
-          step="1"
-          onInput={this.numberChanger.bind(this)}
-        />
+        <div className="canvas">
+          <P5Wrapper
+            sketch={WrapperHex}
+            testNumber={this.props.state.testNumber}
+            hexColor={this.props.state.hexColor}
+            hexNameColor={this.props.state.hexNameColor}
+            imageHue={this.props.state.imageHue}
+            gridX={this.props.state.gridX}
+            gridY={this.props.state.gridY}
+          />
+        </div>
+        <div className="panel">
+          <Panel />
+        </div>
       </div>
     );
   }
 }
 
-export default WrapperTest;
+export default connect(mapStateToProps)(WrapperTest);
