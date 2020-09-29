@@ -26,13 +26,19 @@ const mapDispatchToProps = function (dispatch) {
 };
 
 const Panel = (props) => {
-  const [buttonToggle, setButtonToggle] = useState(false);
+  const [buttonToggle, setButtonToggle] = useState();
   return (
     <React.Fragment>
-      <h1>Hello This Is The Panel</h1>
-      <button onClick={() => setButtonToggle(false)}>Movement and Scale</button>
-      <button onClick={() => setButtonToggle(true)}>Color Customization</button>
-      {!buttonToggle && (
+      <button onClick={() => setButtonToggle('scale')}>
+        Movement and Scale
+      </button>
+      <button onClick={() => setButtonToggle('hexCol')}>
+        Hex Color Customization
+      </button>
+      <button onClick={() => setButtonToggle('imageCol')}>
+        Image Color Customization
+      </button>
+      {buttonToggle === 'scale' && (
         <div className="hexScales">
           <h2>X INPUT</h2>
           <input
@@ -63,7 +69,7 @@ const Panel = (props) => {
           />
         </div>
       )}
-      {buttonToggle && (
+      {buttonToggle === 'hexCol' && (
         <div className="colorHex">
           <h2>HEX COLOR</h2>
           <ChromePicker
@@ -75,6 +81,10 @@ const Panel = (props) => {
             color={props.hexNameColor}
             onChange={(color) => props.loadHexNameColor(color.rgb)}
           />
+        </div>
+      )}
+      {buttonToggle === 'imageCol' && (
+        <div className="colorImg">
           <h2>IMAGE TINT</h2>
           <ChromePicker
             color={props.imageHue}

@@ -40,7 +40,7 @@ body {
 }
 
 .canvas {
-  margin: 0.5% 0;
+  margin: 0.5% 10px;
 }
 
 main {
@@ -63,6 +63,22 @@ main {
 .panel {
   padding: 1%;
   margin: 0.5% 0;
-  background: pink;
+  background: whitesmoke;
   height: 800px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: aliceblue;
+  border-radius: 7px;
+  box-shadow: inset 0 0 9px 0px #8c8697;
+}
+
+.panel button {
+  background: #c7bfd8;
+  margin: 1%;
+  padding: 1%;
+}
+
+.panel button:focus {
+  background: #d8bfd2;
 }
