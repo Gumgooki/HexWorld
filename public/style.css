@@ -3,6 +3,8 @@
  * but feel free to change me to your heart's content!
  */
 
+@import url('../node_modules/@fortawesome/fontawesome-free/css/all.css');
+
 * {
   box-sizing: border-box;
   font-family: 'Russo One', sans-serif;
@@ -81,4 +83,22 @@ main {
 
 .panel button:focus {
   background: #d8bfd2;
+}
+
+.upload-container {
+  margin: 10% 15%;
+  padding: 0% 10%;
+}
+
+.upload-box {
+  text-align: center;
+  outline: dotted 2.5px ivory;
+  padding: 15%;
+  background: #c7bfd8;
+  outline-offset: -10px;
+  box-shadow: 0px 0px 35px 2px #b7b7b79e;
+}
+
+.upload-box p {
+  padding: 5%;
 }
