@@ -52,6 +52,7 @@ const WrapperHex = function (p) {
   // };
   p.setup = function () {
     p.createCanvas(1500, 800);
+    // p.createCanvas(1084, 1100);
     img = p.loadImage(img);
     // img = p.createImg(img);
     //need to hide this image for some reason, kind of a weird quirk?

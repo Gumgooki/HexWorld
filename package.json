@@ -1,5 +1,6 @@
 {
   "name": "hexworld",
+  "homepage": "https://www.thomasdanielbunch.com",
   "version": "1.0.0",
   "description": "Instead of making a hex-map from scratch, why not take inspiration from the very planet you live on? HexWorld allows you to transform the breathtaking terrain of Madre Terra into your own hex-maps. No need to stress about if your land formations are realistic, or if there really could be snow that close to the forest; Planet Earth has got your back!",
   "main": "index.js",
@@ -10,7 +11,7 @@
     "test": "NODE_ENV='test' mocha  ./tests --recursive --watch --require babel-polyfill --require babel-register",
     "start": "echo 'Running server for production - developers, use npm run start-dev for development' && node main",
     "seed": "node seed.js",
-    "build": "webpack"
+    "build": "npm run build-watch & npm run start-server"
   },
   "author": "",
   "license": "ISC",
