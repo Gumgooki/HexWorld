@@ -10,7 +10,7 @@
     "test": "NODE_ENV='test' mocha  ./tests --recursive --watch --require babel-polyfill --require babel-register",
     "start": "echo 'Running server for production - developers, use npm run start-dev for development' && node main",
     "seed": "node seed.js",
-    "build": "npm run start-server"
+    "build": "npm start"
   },
   "author": "",
   "license": "ISC",
